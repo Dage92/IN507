@@ -1,0 +1,8 @@
+SELECT S.nom AS nom, 
+	(SELECT COUNT(*)
+	FROM infirmier I
+	WHERE I.code_service = s.code) /
+	(SELECT COUNT(*)
+	FROM hospitalisation H
+	WHERE h.code_service = s.code) AS rapport_i_sur_m
+FROM service S

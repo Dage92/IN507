@@ -1,0 +1,5 @@
+SELECT prenom, nom
+FROM employe E, infirmier I
+WHERE
+	E.numero = I.numero
+	AND I.rotation = "NUIT"

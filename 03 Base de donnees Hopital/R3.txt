@@ -1,0 +1,5 @@
+SELECT S.nom, batiment, E.prenom, E.nom, D.specialite
+FROM service S, employe E, docteur D
+WHERE
+	S.directeur = D.numero
+	AND E.numero = D.numero

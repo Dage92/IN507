@@ -1,0 +1,3 @@
+SELECT prenom, nom
+FROM malade M
+WHERE M.mutuelle = 'MAAF'

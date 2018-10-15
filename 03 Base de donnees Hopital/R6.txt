@@ -1,0 +1,6 @@
+SELECT C.code_service, cast(AVG(C.nb_lits) as decimal(10,1)) AS nb_moyen_de_lits
+FROM chambre C, service S
+WHERE
+	S.code = C.code_service
+	AND S.batiment = "A"
+GROUP BY C.code_service

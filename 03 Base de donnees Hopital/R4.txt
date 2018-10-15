@@ -1,0 +1,7 @@
+SELECT H.no_chambre, H.lit, S.nom, M.prenom, M.nom, M.mutuelle
+FROM hospitalisation H, service S, malade M
+WHERE
+	M.numero = H.no_malade
+	AND H.code_service = S.code
+	AND S.batiment = "B"
+	AND M.mutuelle LIKE "MN%"

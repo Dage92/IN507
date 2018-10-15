@@ -1,0 +1,3 @@
+SELECT I.code_service, cast(AVG(I.salaire) as decimal(10,2)) AS moyenne_des_salaires
+FROM infirmier I
+GROUP BY I.code_service

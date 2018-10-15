@@ -1,0 +1,7 @@
+SELECT M.nom, M.prenom, COUNT(DISTINCT S.no_docteur) AS nb_soignants, COUNT(DISTINCT D.specialite) AS nb_specialites
+FROM malade M, soigne S, docteur D
+WHERE
+	S.no_malade = M.numero
+	AND S.no_docteur = D.numero
+GROUP BY S.no_malade
+HAVING COUNT(DISTINCT S.no_docteur) > 3
