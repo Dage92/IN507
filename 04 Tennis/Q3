@@ -1,0 +1,4 @@
+SELECT nom AS Nom, age AS Age
+FROM Joueurs J, Rencontre R
+WHERE	R.lieutournoi = 'Roland-Garros'
+		AND R.nomgagnant = J.nom

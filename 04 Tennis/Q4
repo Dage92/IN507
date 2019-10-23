@@ -1,0 +1,3 @@
+SELECT nom AS Nom
+FROM Sponsor S
+WHERE S.adresse = 'France'
