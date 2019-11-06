@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 23, 2019 at 04:54 PM
+-- Generation Time: Nov 06, 2019 at 04:54 PM
 -- Server version: 10.1.24-MariaDB-6
 -- PHP Version: 7.0.22-3
 
@@ -41,8 +41,10 @@ CREATE TABLE `Gain` (
 
 INSERT INTO `Gain` (`nomjoueur`, `nomsponsor`, `lieutournoi`, `annee`, `rang`, `prime`) VALUES
 ('Djokovic', 'IBM', 'Australian Open', 2011, 1, 1000000),
+('Djokovic', 'Wilson', 'Flushing-Meadows', 2010, 2, 500000),
 ('Federer', 'Peugeot', 'Roland-Garros', 2011, 2, 500000),
 ('Murray', 'IBM', 'Australian Open', 2011, 2, 500000),
+('Nadal', 'Wilson', 'Flushing-Meadows', 2010, 1, 1000000),
 ('Nadal', 'Peugeot', 'Roland-Garros', 2011, 1, 1000000);
 
 -- --------------------------------------------------------
@@ -55,20 +57,51 @@ CREATE TABLE `Joueurs` (
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `age` int(11) NOT NULL,
-  `nationalite` varchar(30) NOT NULL
+  `nationalite` varchar(30) NOT NULL,
+  `taille` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Joueurs`
 --
 
-INSERT INTO `Joueurs` (`nom`, `prenom`, `age`, `nationalite`) VALUES
-('Berdych', 'Tomas', 34, 'Tchequie'),
-('Djokovic', 'Novak', 32, 'Serbie'),
-('Federer', 'Roger', 34, 'Suisse'),
-('Murray', 'Andy', 32, 'Royaume-Uni'),
-('Nadal', 'Rafael', 33, 'Espagne'),
-('Soderling', 'Robin', 35, 'Suede');
+INSERT INTO `Joueurs` (`nom`, `prenom`, `age`, `nationalite`, `taille`) VALUES
+('Berdych', 'Tomas', 35, 'Tchequie', NULL),
+('Djokovic', 'Novak', 33, 'Serbie', NULL),
+('Federer', 'Roger', 35, 'Suisse', NULL),
+('FrenchPName1', 'FrenchPSurname1', 16, 'France', 185),
+('FrenchPName2', 'FrenchPSurname2', 34, 'France', 176),
+('Murray', 'Andy', 33, 'Royaume-Uni', NULL),
+('Nadal', 'Rafael', 34, 'Espagne', NULL),
+('Soderling', 'Robin', 36, 'Suede', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `Joueurs_français`
+-- (See below for the actual view)
+--
+CREATE TABLE `Joueurs_français` (
+`nom` varchar(30)
+,`prenom` varchar(30)
+,`age` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `Matchs_perdus`
+-- (See below for the actual view)
+--
+CREATE TABLE `Matchs_perdus` (
+`Nom du Perdant` varchar(30)
+,`Prenom du Perdant` varchar(30)
+,`Tournoi` varchar(30)
+,`Année` int(11)
+,`Score` varchar(15)
+,`Nom de l'Opposant` varchar(30)
+,`Prenom de l'Opposant` varchar(30)
+);
 
 -- --------------------------------------------------------
 
@@ -81,22 +114,22 @@ CREATE TABLE `Rencontre` (
   `nomperdant` varchar(30) NOT NULL,
   `lieutournoi` varchar(30) NOT NULL,
   `annee` int(11) NOT NULL,
-  `score` varchar(15) DEFAULT NULL
+  `score` varchar(15) DEFAULT NULL,
+  `NomDuStade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Rencontre`
 --
 
-INSERT INTO `Rencontre` (`nomgagnant`, `nomperdant`, `lieutournoi`, `annee`, `score`) VALUES
-('Djokovic', 'Murray', 'Australian Open', 2011, '6/4-6/2-6/3'),
-('Djokovic', 'Nadal', 'Flushing-Medows', 2011, '6/2-6/4-6/7-6/1'),
-('Djokovic', 'Nadal', 'Wimbledon', 2011, '6/4-6/1-1/6-6/3'),
-('Federer', 'Murray', 'Australian Open', 2010, '6/3-6/4-7/6'),
-('Nadal', 'Berdych', 'Wimbledon', 2010, '6/3-7/5-6/4'),
-('Nadal', 'Djokovic', 'Flushing-Medows', 2010, '6/4-5/7-6/4-6/2'),
-('Nadal', 'Federer', 'Roland-Garros', 2011, '7/5-7/6-5/7-6/1'),
-('Nadal', 'Soderling', 'Roland-Garros', 2010, '6/4-6/2-6/4');
+INSERT INTO `Rencontre` (`nomgagnant`, `nomperdant`, `lieutournoi`, `annee`, `score`, `NomDuStade`) VALUES
+('Djokovic', 'Murray', 'Australian Open', 2011, '6/4-6/2-6/3', NULL),
+('Djokovic', 'Nadal', 'Flushing-Medows', 2011, '6/2-6/4-6/7-6/1', NULL),
+('Djokovic', 'Nadal', 'Wimbledon', 2011, '6/4-6/1-1/6-6/3', NULL),
+('Nadal', 'Berdych', 'wimbledon', 2010, '6/3-7/5-6/4', NULL),
+('Nadal', 'Djokovic', 'flushing-medows', 2010, '6/4-5/7-6/4-6/2', NULL),
+('Nadal', 'Federer', 'Roland-Garros', 2011, '7/5-7/6-5/7-6/1', NULL),
+('Nadal', 'Soderling', 'roland-garros', 2010, '6/4-6/2-6/4', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,6 +156,24 @@ INSERT INTO `Sponsor` (`nom`, `lieutournoi`, `annee`, `adresse`, `montant`) VALU
 ('Peugeot', 'Roland-Garros', 2011, 'France', 1500000),
 ('Wilson', 'Flushing-Meadows', 2010, 'USA', 1500000),
 ('Wilson', 'Flushing-Meadows', 2011, 'USA', 1500000);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `Joueurs_français`
+--
+DROP TABLE IF EXISTS `Joueurs_français`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`user`@`localhost` SQL SECURITY DEFINER VIEW `Joueurs_français`  AS  select `J`.`nom` AS `nom`,`J`.`prenom` AS `prenom`,`J`.`age` AS `age` from `Joueurs` `J` where (`J`.`nationalite` = 'France') ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `Matchs_perdus`
+--
+DROP TABLE IF EXISTS `Matchs_perdus`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`user`@`localhost` SQL SECURITY DEFINER VIEW `Matchs_perdus`  AS  select `R`.`nomperdant` AS `Nom du Perdant`,`J`.`prenom` AS `Prenom du Perdant`,`R`.`lieutournoi` AS `Tournoi`,`R`.`annee` AS `Année`,`R`.`score` AS `Score`,`R`.`nomgagnant` AS `Nom de l'Opposant`,`J`.`prenom` AS `Prenom de l'Opposant` from (`Rencontre` `R` join `Joueurs` `J`) where ((`R`.`nomperdant` = `J`.`nom`) and (`R`.`nomgagnant` = `J`.`nom`)) ;
 
 --
 -- Indexes for dumped tables

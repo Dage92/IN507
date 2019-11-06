@@ -1,0 +1,58 @@
+// Exercice 3 - Requetes d'interrogation
+// 		1)
+SELECT nom AS Nom, prenom AS Prenom
+FROM Joueurs J
+WHERE J.prenom = 'Roger'
+
+//		2)
+SELECT annee AS Year
+FROM Rencontre R
+WHERE 	R.lieutournoi = 'Roland-Garros'
+
+//		3)
+SELECT nom AS Nom, age AS Age
+FROM Joueurs J, Rencontre R
+WHERE	R.lieutournoi = 'Roland-Garros'
+		AND R.nomgagnant = J.nom
+
+//		4)
+SELECT nom AS Nom
+FROM Sponsor S
+WHERE S.adresse = 'France'
+
+//		5)
+SELECT nom AS Nom, prenom AS Prenom
+FROM Joueurs J, Sponsor S, Rencontre R
+WHERE	S.nom = 'BNP-Paribas'
+		R.nomgagnant = J.nom
+
+// Exercice 4 - Modification du schéma et du contenu de la BD
+//		e)
+UPDATE Sponsor
+SET nom = UPPER(nom)
+
+UPDATE Rencontre
+SET lieutournoi = LOWER(lieutournoi)
+WHERE annee < 2011
+
+UPDATE Joueurs
+SET age = age + 1
+
+//		f)
+DELETE FROM Rencontre
+WHERE 		nomgagnant = "Federer"
+		OR	nomperdant = "Federer"
+		AND	lieutournoi = "australian open"
+	
+// Exercice 5 - Création de vues et requêtes sur les vues
+
+CREATE VIEW Joueurs_français (nom, prenom, age)
+AS SELECT nom AS Nom, prenom AS Prenom, age AS Age
+FROM Joueurs J
+WHERE	J.nationalite = 'France'
+
+CREATE VIEW Matchs_perdus
+AS SELECT nomperdant AS 'Nom du Perdant', prenom AS 'Prenom du Perdant', lieutournoi AS Tournoi, annee AS Année, score AS Score, nomgagnant AS 'Nom de l''Opposant', prenom AS 'Prenom de l''Opposant'
+FROM Rencontre R, Joueurs J
+WHERE		R.nomperdant = J.nom
+		AND	R.nomgagnant = J.nom

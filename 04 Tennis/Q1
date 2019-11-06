@@ -1,3 +1,0 @@
-SELECT nom AS Nom, prenom AS Prenom
-FROM Joueurs J
-WHERE J.prenom = 'Roger'

@@ -1,3 +1,0 @@
-SELECT annee AS Year
-FROM Rencontre R
-WHERE 	R.lieutournoi = 'Roland-Garros'
