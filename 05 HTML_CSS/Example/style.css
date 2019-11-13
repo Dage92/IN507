@@ -1,0 +1,96 @@
+/*
+body {
+    background-image: url("fond.jpg");
+    width: 600px; 
+    margin: auto;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+blockquote {
+    background: red;
+}
+*/
+
+
+/*
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+*/
+
+/*
+td {
+    padding-right: 60px;
+}
+*/
+
+
+/*
+.ToC {
+    border-spacing: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 15px;
+}
+*/
+
+
+/*
+#ccl {
+    border-spacing: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+*/
+
+/*
+div.content {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+*/
+
+/*
+#ccl h1{
+    font: 40px arial;
+}
+*/
+/*
+.ToC > h1:first-child {
+    font: 30px arial, bold;
+}
+*/
+/*
+.ToC > h1:not(:first-child) {
+    display: none;
+}
+*/
+/*
+.ToC p:first-of-type{
+    background: lightgrey;
+    font-size: 80%;
+}
+*/
+/*
+tr:nth-child(even) {
+    background-color: #CCC;
+}
+
+tr:nth-child(odd) {
+    background-color: #FFF;
+}
+*/

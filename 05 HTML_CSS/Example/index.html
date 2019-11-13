@@ -1,0 +1,91 @@
+ <!DOCTYPE html> 
+<html>
+  <head>
+    <title>Un petit exemple de HTML+CSS</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+  </head>
+  
+  <body>
+    <div class="ToC">
+      <h1 name="ToC">Table des matières</h1>
+      <ul>
+	<li>
+	  <a href="#1">Chapitre 1</a>
+	  <p class="abstract">
+	    Un résumé de ce qui se passe de passionant dans le premier chapitre.
+	  </p>
+	  <p>
+	    Et un commentaire sans rapport.
+	  </p>
+	</li>
+	<li>
+	  <a href="#2">Chapitre 2</a>
+	  <p class="abstract">
+	    Ce deuxième chapitre parle probablement de quelque chose, même si je
+	    ne suis pas bien sûr de quoi. En plus c'est certainement sérieux, il
+	    y a une table dedans.
+	  </p>
+	</li>
+	<li>
+	  <a href="#ccl">Conclusion</a>
+	</li>
+      </ul>
+      <h1> Un autre titre dans la table des matières</h1>
+    </div>
+    <div class="content">
+      <div class="chapitre">
+	<a name="1"><h1>Bonjour je suis un Chapitre</h1></a>
+	<p> 
+	  Ici on parle du premier chapitre. Notez comme la mise en page est jolie.
+	</p>
+	<p>
+	  Et puis un deuxième paragraphe pour la forme. Je suis un peu à court
+	  de choses à écrire, alors on va faire une grande citation.
+	</p>
+	<blockquote cite="Sir Terry Pratchett">
+	  <p>
+	    Most of the great triumphs and tragedies of history are caused not
+	    by people being fundamentally good or fundamentally evil, but by
+	    people being fundamentally people
+	  </p>
+	</blockquote>
+	<p>
+	  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta
+	  dui purus, et gravida nibh semper eget. Sed diam neque, maximus at
+	  dui sodales, egestas convallis neque. In nec tincidunt mi. Vivamus
+	  ac turpis in urna consequat ullamcorper quis nec ligula. Aenean
+	  libero purus, dignissim sit amet luctus et, lobortis et
+	  urna. Quisque nunc ante, sodales id lacinia sed, bibendum quis
+	  quam. Nulla suscipit id mi scelerisque scelerisque. Donec congue vel
+	  eros ut eleifend. Duis diam tortor, commodo a sollicitudin in,
+	  vehicula at ante. Maecenas vel accumsan sapien. Mauris nisl eros,
+	  euismod non dictum eu, ultricies a neque. Vestibulum pharetra eros
+	  erat, eu venenatis nulla ullamcorper ac.
+	</p>
+      </div>
+      <div class="chapitre">
+	<a name="2"><h1>Hey moi aussi je suis un chapitre</h1></a>
+	<p>
+	  Parce que sinon c'est quand même franchement vide cette page web.
+	</p>
+	<table>
+	  <tr><td>Jean Paul</td><td>Sartre</td></tr>
+	  <tr><td>Victor</td><td>Hugo</td></tr>
+	  <tr><td>Romain</td><td>Gary</td></tr>
+	  <tr><td>Boris</td><td>Vian</td></tr>
+	  <tr><td>Iain</td><td>Banks</td></tr>
+	  <tr><td>Philip K.</td><td>Dick</td></tr>
+	  <tr><td>Arthur C.</td><td>Clarke</td></tr>
+	  <tr><td>Aldous</td><td>Huxley</td></tr>	  
+	</table>
+      </div>
+    </div>
+    <div id="ccl">
+      <h1>Conclusion</h1>
+      <p>
+	Tout ça était passionnant, mais ils faut savoir s'arrêter à un moment.
+      </p>
+    </div>
+  </body>
+</html>
